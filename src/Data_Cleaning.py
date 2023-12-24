@@ -5,6 +5,8 @@ import numpy as np
 from typing import Tuple
 from typing_extensions import Annotated
 
+from sklearn.model_selection import train_test_split
+
 class DataCleaningStrategy(ABC):
     """
     Abstract base class for data cleaning strategies.
@@ -46,3 +48,28 @@ class DataPreprocessing(DataCleaningStrategy):
         
         
         
+class DataSplitting(DataCleaningStrategy):
+    """
+    This class provides methods for cleaning data.
+    """
+    def clean_data(self, X: Annotated[pd.DataFrame, "Features"], 
+                   y: Annotated[pd.Series, "Target Variable"]) -> Annotated[Tuple[pd.DataFrame, pd.DataFrame, pd.Series, pd.Series], "Training and Test Set"]:
+        """
+        Splits the features and Target Variables 
+
+        Parameters:
+        - X: Features
+        - y: Target
+
+        Returns:
+        - X_train, X_test, y_train, y_test
+        
+        """
+        
+        try:
+            X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.20, random_state=0)
+            return X_train, X_test, y_train, y_test
+            
+        except Exception as e:
+            logging.error("Data Splitting Failed: {}".format(e))
+            raise e
