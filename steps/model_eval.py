@@ -4,7 +4,12 @@ import logging
 import pandas as pd
 import tensorflow as tf
 
-@step
+import mlflow
+from zenml.client import Client
+
+experiment_tracker = Client().active_stack.experiment_tracker
+
+@step(experiment_tracker=experiment_tracker.name)
 def model_eval(X_test:pd.DataFrame, y_true: pd.DataFrame, model: tf.keras.Model):
     """This step evaluates the performance of a model.
         Args:
@@ -22,6 +27,7 @@ def model_eval(X_test:pd.DataFrame, y_true: pd.DataFrame, model: tf.keras.Model)
         
         acc = Evaluate()
         accuracy_score = acc.evaluate(y_true, y_pred)
+        mlflow.log_metric("accuracy", accuracy_score)
         
         logging.info("Evaluation complete!")
         logging.info("Accuracy Score: {}".format(acc))

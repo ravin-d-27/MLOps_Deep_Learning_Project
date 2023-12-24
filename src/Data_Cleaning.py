@@ -46,6 +46,18 @@ class DataPreprocessing(DataCleaningStrategy):
             logging.error("Data Cleaning Failed: {}".format(e))
             raise e
         
+    def handle_data(self, data: Annotated[pd.DataFrame, "The input data to be cleaned."]) -> pd.DataFrame:
+        """
+        This method is used to clean the data and returns the dataframe
+        """
+        
+        try:
+            data = data.drop(['DATE_DIED','CLASIFFICATION_FINAL'], axis=1)
+            return data
+        except Exception as e:
+            logging.error("Data Cleaning Failed: {}".format(e))
+            raise e
+        
         
         
 class DataSplitting(DataCleaningStrategy):
