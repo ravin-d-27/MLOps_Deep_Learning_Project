@@ -15,5 +15,5 @@ def training_pipeline(path: str):
     X_train, X_test, y_train, y_test = split_data(X,y)
     model = model_train(X_train, y_train)
     
-    model_eval(X_test, y_test, model)
+    acc = model_eval(X_test, y_test, model)
     
