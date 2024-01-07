@@ -1,6 +1,6 @@
 # MLOps Project - Deployment of Deep Learning Model
 
-This repository contains the MLOps implementation of Deploying and making a prediction server of a Deep Learning Model using ZenML and MLFlow.
+This repository contains the MLOps implementation of Deploying and making a prediction server of a Deep Learning Model (In this case, it is ANN) using ZenML and MLFlow.
 
 ## About the Dataset:
 Coronavirus disease (COVID-19) is an infectious disease caused by a newly discovered coronavirus. Most people infected with COVID-19 virus will experience mild to moderate respiratory illness and recover without requiring special treatment. Older people, and those with underlying medical problems like cardiovascular disease, diabetes, chronic respiratory disease, and cancer are more likely to develop serious illness.
@@ -26,7 +26,7 @@ Here, I have used Artificial Neural Networks model which classifies whether the 
 - Linux or Mac Environment (In windows, use WSL. In my case, I have used Linux to develop this)
 - Good Specifications to run the Deep Learning Model (GPU is Preferred)
 
-For packages and libraries, refer to requirements.txt file
+For knowing more about packages and libraries, refer to requirements.txt file
 
 ## Training Pipeline
 
